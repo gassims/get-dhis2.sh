@@ -332,7 +332,8 @@ echo ""
     echo "$line"
     if [[ "$line" =~ "Server startup in " && "$line" =~ "milliseconds" ]]; then
       echo "DHIS2 Web application startup detected!"
-      kill "$(pgrep -f "docker compose logs -f web")" 2>/dev/null || true
+      # kill "$(pgrep -f "docker compose logs -f web")" 2>/dev/null || true
+      pkill -P $$ docker
       break
     fi
   done
